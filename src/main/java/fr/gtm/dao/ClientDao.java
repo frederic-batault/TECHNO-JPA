@@ -7,9 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import org.omg.CORBA.Request;
-
-import fr.gtm.domaine.*;
+import fr.gtm.domaine.Client;
+import fr.gtm.domaine.Conseiller;
 
 /**
  * Classe ClientDao
@@ -85,7 +84,7 @@ public class ClientDao {
 					+ leClient.getIdClient();
 			ResultSet result = stmt.executeQuery(sql); // Ex�cution de la requete
 			result.next();
-			String res = result.getString("email");
+//			String res = result.getString("email");
 			
 			leClient.setNom(result.getString("nom"));
 			leClient.setPrenom(result.getString("prenom"));

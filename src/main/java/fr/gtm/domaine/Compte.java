@@ -15,7 +15,7 @@ public class Compte implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	// Attributs
 	private Integer decouvert;
 	private Integer idCompte;
@@ -23,7 +23,7 @@ public class Compte implements Serializable {
 	private Float solde;
 	private String dateCreation;
 	private Integer idTypeCompte;
-	// private Client client;
+	private Integer idClient;
 
 	/**
 	 * Constructeur par defaut
@@ -92,6 +92,14 @@ public class Compte implements Serializable {
 
 	public void setIdTypeCompte(Integer idTypeCompte) {
 		this.idTypeCompte = idTypeCompte;
+	}
+
+	public Integer getIdClient() {
+		return idClient;
+	}
+
+	public void setIdClient(Integer idClient) {
+		this.idClient = idClient;
 	}
 
 }
