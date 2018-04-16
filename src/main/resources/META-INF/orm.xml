@@ -5,12 +5,21 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm
 		http://java.sun.com/xml/ns/persistence/orm_2_0.xsd">
 
-	<entity class="fr.gtm.domaine.CompteCourant">
+	<entity class="fr.gtm.domaine.Compte">
 		<table name="compte" />
 		<attributes>
-			<id name="">
-			
+			<id name="idCompte">
+				<generated-value strategy="IDENTITY" />
 			</id>
+			<basic name="decouvert" />
+			<basic name="numCompte" />
+			<basic name="solde" />
+			<basic name="dateCreation" />
+			<basic name="idTypeCompte" />
+<!-- 			Autre sens de la relation client <-> compte. -->
+<!-- 			<many-to-one name="client"> -->
+<!-- 				<join-column name="idClient" referenced-column-name="idClient" /> -->
+<!-- 			</many-to-one> -->
 		</attributes>
 	</entity>
 </entity-mappings>

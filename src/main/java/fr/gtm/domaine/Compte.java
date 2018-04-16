@@ -1,5 +1,7 @@
 package fr.gtm.domaine;
 
+import java.io.Serializable;
+
 /**
  * Classe abstraite Compte, dont sont heritees les classes CompteCourant et
  * CompteEpargne
@@ -7,34 +9,21 @@ package fr.gtm.domaine;
  * @author Stagiaire
  *
  */
-public class Compte {
+public class Compte implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	// Attributs
-	private int decouvert;
+	private Integer decouvert;
 	private Integer idCompte;
 	private String numCompte;
-	private float solde;
+	private Float solde;
 	private String dateCreation;
-	private int idTypeCompte;
-	private int idClient;
-
-	// Constructeur
-
-	public int getDecouvert() {
-		return decouvert;
-	}
-
-	public void setDecouvert(int decouvert) {
-		this.decouvert = decouvert;
-	}
-
-	public Integer getIdCompte() {
-		return idCompte;
-	}
-
-	public void setIdCompte(Integer idCompte) {
-		this.idCompte = idCompte;
-	}
+	private Integer idTypeCompte;
+	// private Client client;
 
 	/**
 	 * Constructeur par defaut
@@ -55,91 +44,54 @@ public class Compte {
 		this.solde = solde;
 		this.dateCreation = dateCreation;
 		this.idTypeCompte = idTypeCompte;
-		this.idClient = idClient;
 	}
 
-	public Compte(String numCompte, float solde, String dateCreation) {
-		super();
-		this.numCompte = numCompte;
-		this.solde = solde;
-		this.dateCreation = dateCreation;
+	public Integer getDecouvert() {
+		return decouvert;
 	}
 
-	// Getters/Setters
+	public void setDecouvert(Integer decouvert) {
+		this.decouvert = decouvert;
+	}
 
-	/**
-	 * @return numeroCompte
-	 */
+	public Integer getIdCompte() {
+		return idCompte;
+	}
+
+	public void setIdCompte(Integer idCompte) {
+		this.idCompte = idCompte;
+	}
+
 	public String getNumCompte() {
 		return numCompte;
 	}
 
-	/**
-	 * @param numeroCompte
-	 *            to set
-	 */
 	public void setNumCompte(String numCompte) {
 		this.numCompte = numCompte;
 	}
 
-	/**
-	 * @return solde
-	 */
-	public float getSolde() {
+	public Float getSolde() {
 		return solde;
 	}
 
-	/**
-	 * @param solde
-	 *            to set
-	 */
-	public void setSolde(float solde) {
+	public void setSolde(Float solde) {
 		this.solde = solde;
 	}
 
-	/**
-	 * @return dateCreation
-	 */
 	public String getDateCreation() {
 		return dateCreation;
 	}
 
-	/**
-	 * @param dateCreation
-	 *            to set
-	 */
 	public void setDateCreation(String dateCreation) {
 		this.dateCreation = dateCreation;
 	}
 
-	/**
-	 * @return idTypeCompte
-	 */
-	public int getIdTypeCompte() {
+	public Integer getIdTypeCompte() {
 		return idTypeCompte;
 	}
 
-	/**
-	 * @param idTypeCompte
-	 *            to set
-	 */
-	public void setIdTypeCompte(int idTypeCompte) {
+	public void setIdTypeCompte(Integer idTypeCompte) {
 		this.idTypeCompte = idTypeCompte;
-	}
-
-	/**
-	 * @return idClient
-	 */
-	public int getIdClient() {
-		return idClient;
-	}
-
-	/**
-	 * @param idClient
-	 *            to set
-	 */
-	public void setIdClient(int idClient) {
-		this.idClient = idClient;
 	}
 
 }
