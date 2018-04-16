@@ -1,6 +1,7 @@
 package fr.gtm.presentation;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -8,11 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import fr.gtm.domaine.Client;
-import fr.gtm.domaine.CompteCourant;
-import fr.gtm.domaine.CompteEpargne;
+import fr.gtm.domaine.Compte;
 import fr.gtm.service.ClientService;
-import fr.gtm.service.CompteCourantService;
-import fr.gtm.service.CompteEpargneService;
+import fr.gtm.service.CompteService;
 
 /**
  * Servlet implementation class listCompte
@@ -35,22 +34,18 @@ public class ServletListCompte extends HttpServlet {
 		HttpSession session = request.getSession();
 		String id = request.getParameter("id");
 		ClientService servcLient = new ClientService();
-		CompteCourantService ccs = new CompteCourantService();
-		CompteEpargneService ces = new CompteEpargneService();
-		CompteCourant cc = new CompteCourant();
-		CompteEpargne ce = new CompteEpargne();
+		CompteService ccs = new CompteService();
+		Compte cc = new Compte();
 		Client leC = new Client();
 		
 		leC.setIdClient(Integer.parseInt(id));
 		leC = servcLient.getClient(leC);
 		cc = ccs.getCompteCourant(leC);
-		ce = ces.getCompteEpargne(leC);
 		
 //		cc.setDateCreation("toto");
 //		cc.setNumCompte("StringNum");
 		
 		session.setAttribute("cc", cc);
-		session.setAttribute("ce", ce);
 		session.setAttribute("idClient", id);
 		
 		this.getServletContext().getRequestDispatcher("/listCompte.jsp").forward(request, response);

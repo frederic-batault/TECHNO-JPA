@@ -14,7 +14,7 @@ public class ConnectionDao {
 			// Connexion � la base de donnee
 			String url = "jdbc:mysql://localhost:3306/proxibanquebdd";
 			String login = "root";
-			String mdp = "";
+			String mdp = "root";
 			Connection connection = DriverManager.getConnection(url, login, mdp);
 
 			return connection;

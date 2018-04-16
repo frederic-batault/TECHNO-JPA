@@ -1,20 +1,20 @@
 package fr.gtm.service;
 
 
-import fr.gtm.dao.CompteCourantDao;
+import fr.gtm.dao.CompteDao;
 import fr.gtm.domaine.Client;
-import fr.gtm.domaine.CompteCourant;
+import fr.gtm.domaine.Compte;
 
-public class CompteCourantService {
+public class CompteService {
 
-		CompteCourantDao dao = new CompteCourantDao();
+		CompteDao dao = new CompteDao();
 
 		/**
 		 * methode qui nous permet de creer un compte courant
 		 * @param leCompteCourant
 		 * @return
 		 */
-		public boolean createCompteCourant(CompteCourant leCompteCourant) {
+		public boolean createCompteCourant(Compte leCompteCourant) {
 			boolean reponse = dao.createCompteCourant(leCompteCourant);
 			return reponse; // retour de la reponse
 		}
@@ -24,8 +24,8 @@ public class CompteCourantService {
 		 * @param c
 		 * @return
 		 */
-		public CompteCourant getCompteCourant(Client c) {
-			CompteCourant leCompteCourant = new CompteCourant();
+		public Compte getCompteCourant(Client c) {
+			Compte leCompteCourant = new Compte();
 			leCompteCourant = dao.getCompteCourant(c);
 			return leCompteCourant;
 		}
@@ -35,7 +35,7 @@ public class CompteCourantService {
 		 * @param leCompteCourant
 		 * @return
 		 */
-		public CompteCourant updateCCompteCourant(CompteCourant leCompteCourant) {
+		public Compte updateCCompteCourant(Compte leCompteCourant) {
 			leCompteCourant = dao.updateCompteCourant(leCompteCourant);
 			return leCompteCourant;
 		}
@@ -45,7 +45,7 @@ public class CompteCourantService {
 		 * @param leCompteCourant
 		 * @return
 		 */
-		public boolean deleteCompteCourant(CompteCourant leCompteCourant) {
+		public boolean deleteCompteCourant(Compte leCompteCourant) {
 			boolean reponse = dao.deleteCompteCourant(leCompteCourant);
 			return reponse; // retour de la r�ponse
 		}
@@ -62,7 +62,7 @@ public class CompteCourantService {
 		 * @param montant
 		 * @return
 		 */
-		public float updateSolde(CompteCourant leCompteCourant,float montant) {
+		public float updateSolde(Compte leCompteCourant,float montant) {
 			leCompteCourant=dao.updateCompteCourant(leCompteCourant);
 			return leCompteCourant.getSolde ();
 		}
@@ -75,7 +75,7 @@ public class CompteCourantService {
 		 * @param montant
 		 *            Le montant a crediter
 		 */
-		public CompteCourant crediterCompteCourant(CompteCourant monCompteCourant, float montant) {
+		public Compte crediterCompteCourant(Compte monCompteCourant, float montant) {
 			float solde = monCompteCourant.getSolde();
 			float nouveauSolde = solde + montant;
 			monCompteCourant.setSolde(nouveauSolde);
@@ -92,7 +92,7 @@ public class CompteCourantService {
 		 * @param montant
 		 *            Le montant a debiter
 		 */
-		public boolean debiterCompteCourant(CompteCourant monCompteCourant, float montant) {
+		public boolean debiterCompteCourant(Compte monCompteCourant, float montant) {
 			float solde = monCompteCourant.getSolde();
 			float nouveauSolde = solde - montant;
 			float autoDecouv = monCompteCourant.getDecouvert();

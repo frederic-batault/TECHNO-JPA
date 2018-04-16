@@ -7,9 +7,11 @@ package fr.gtm.domaine;
  * @author Stagiaire
  *
  */
-public abstract class Compte {
+public class Compte {
 
 	// Attributs
+	private int decouvert;
+	private Integer idCompte;
 	private String numCompte;
 	private float solde;
 	private String dateCreation;
@@ -17,6 +19,22 @@ public abstract class Compte {
 	private int idClient;
 
 	// Constructeur
+
+	public int getDecouvert() {
+		return decouvert;
+	}
+
+	public void setDecouvert(int decouvert) {
+		this.decouvert = decouvert;
+	}
+
+	public Integer getIdCompte() {
+		return idCompte;
+	}
+
+	public void setIdCompte(Integer idCompte) {
+		this.idCompte = idCompte;
+	}
 
 	/**
 	 * Constructeur par defaut
@@ -39,7 +57,7 @@ public abstract class Compte {
 		this.idTypeCompte = idTypeCompte;
 		this.idClient = idClient;
 	}
-	
+
 	public Compte(String numCompte, float solde, String dateCreation) {
 		super();
 		this.numCompte = numCompte;

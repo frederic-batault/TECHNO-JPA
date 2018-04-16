@@ -7,9 +7,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import fr.gtm.domaine.Client;
-import fr.gtm.domaine.CompteCourant;
+import fr.gtm.domaine.Compte;
 
-public class CompteCourantDao {
+public class CompteDao {
 
 	private Statement connect() {
 		try {
@@ -19,7 +19,7 @@ public class CompteCourantDao {
 			// Connexion a la base de donnee
 			String url = "jdbc:mysql://localhost:3306/proxibanquebdd";
 			String login = "root";
-			String mdp = "";
+			String mdp = "root";
 			Connection connection = DriverManager.getConnection(url, login, mdp);
 
 			// Pr�paration de la requete
@@ -43,7 +43,7 @@ public class CompteCourantDao {
 	 * @param leCompteCourant 
 	 * @return 
 	 */
-	public boolean createCompteCourant(CompteCourant leCompteCourant) {
+	public boolean createCompteCourant(Compte leCompteCourant) {
 		boolean reponse = false; // Creation de la variable de sortie
 		try {
 			Statement stmt = this.connect(); // Connexion et preparation de la requete
@@ -69,8 +69,8 @@ public class CompteCourantDao {
 	 * @param c
 	 * @return
 	 */
-	public CompteCourant getCompteCourant(Client c) {
-		CompteCourant leCompteCourant = new CompteCourant();
+	public Compte getCompteCourant(Client c) {
+		Compte leCompteCourant = new Compte();
 		try {
 			Statement stmt = this.connect(); // Connexion et preparation de la requete
 			String sql = "SELECT  `idCompte`, `dateCreation`, `solde`, `idTypeCompte`, `idClient`, `decouvert` FROM `compte` WHERE idClient = "
@@ -97,7 +97,7 @@ public class CompteCourantDao {
 	 * @param leCompteCourant
 	 * @return
 	 */
-	public CompteCourant updateCompteCourant(CompteCourant leCompteCourant) {
+	public Compte updateCompteCourant(Compte leCompteCourant) {
 		try {
 			Statement stmt = this.connect(); // Connexion et preparation de la requete
 			String sql = "UPDATE `compte` SET `numCompte` = '" + leCompteCourant.getNumCompte() + "', `dateCreation` = '" + leCompteCourant.getDateCreation()
@@ -124,7 +124,7 @@ public class CompteCourantDao {
 	 * @param leCompteCourant
 	 * @return
 	 */
-	public boolean deleteCompteCourant(CompteCourant leCompteCourant) {
+	public boolean deleteCompteCourant(Compte leCompteCourant) {
 		boolean reponse = false; // Creation variable de retour
 		try {
 			Statement stmt = this.connect(); // Connexion et preparation de la requete
@@ -150,7 +150,7 @@ public class CompteCourantDao {
 	 * @param montant
 	 * @return
 	 */
-	public CompteCourant updateSolde(CompteCourant leCompteCourant) {
+	public Compte updateSolde(Compte leCompteCourant) {
 		try {
 			Statement stmt = this.connect(); // Connexion et preparation de la requete
 			String sql = "UPDATE `compte` SET `solde` = '" 	 + leCompteCourant.getSolde() + "' WHERE `numCompte` = "

@@ -13,12 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import fr.gtm.domaine.Client;
-import fr.gtm.domaine.CompteCourant;
-import fr.gtm.domaine.CompteEpargne;
+import fr.gtm.domaine.Compte;
 import fr.gtm.domaine.Conseiller;
 import fr.gtm.service.ClientService;
-import fr.gtm.service.CompteCourantService;
-import fr.gtm.service.CompteEpargneService;
+import fr.gtm.service.CompteService;
 
 /**
  * Servlet implementation class listClient
@@ -61,24 +59,13 @@ public class ServletListClient extends HttpServlet {
 			DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
 			Date today = Calendar.getInstance().getTime();
 			String reportDate = df.format(today);			
-			boolean ok = false;
-			if(Integer.parseInt(idType) == 1) {
-				CompteCourantService ccs = new CompteCourantService();
-				CompteCourant cc = new CompteCourant();
-				cc.setNumCompte("numCompte");
-				cc.setIdClient(Integer.parseInt(idClient));
-				cc.setIdTypeCompte(Integer.parseInt(idType));
-				cc.setDateCreation(reportDate);
-				ok = ccs.createCompteCourant(cc);
-			}else {
-				CompteEpargneService ces = new CompteEpargneService();
-				CompteEpargne ce = new CompteEpargne();
-				ce.setNumCompte("numCompte");
-				ce.setIdClient(Integer.parseInt(idClient));
-				ce.setIdTypeCompte(Integer.parseInt(idType));
-				ce.setDateCreation(reportDate);
-				ok = ces.createCompteEpargne(ce);
-			}
+			CompteService ccs = new CompteService();
+			Compte cc = new Compte();
+			cc.setNumCompte("numCompte");
+			cc.setIdClient(Integer.parseInt(idClient));
+			cc.setIdTypeCompte(Integer.parseInt(idType));
+			cc.setDateCreation(reportDate);
+			ccs.createCompteCourant(cc);
 		}
 		
 		cons.setListeClients(servClient.getAllClient(cons));
