@@ -44,6 +44,13 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.6</version>
 		</dependency>
+		
+		<!-- JPA/Hibernate -->
+		<dependency>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate-core</artifactId>
+		    <version>5.2.16.Final</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>ProxiBanque_V2</finalName>
