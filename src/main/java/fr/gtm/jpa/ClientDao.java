@@ -42,7 +42,9 @@ public class ClientDao extends AbstractDao {
 	}
 
 	public List<Client> getAllClient(Conseiller c) {
-		return this.em.createQuery("SELECT c FROM Client as c").getResultList();
+		return this.em.createNamedQuery("getClients", Client.class)
+				.setParameter("idConseiller", c.getIdConseiller())
+				.getResultList();
 	}
 
 	public Client read(Integer id) {
