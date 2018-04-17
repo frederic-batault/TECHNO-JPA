@@ -78,7 +78,8 @@ public class CompteService {
 	 * @return
 	 */
 	public Compte getCompteCourant(Client c) {
-		Compte leCompteCourant = this.dao.read(1);
+		Compte leCompteCourant = c.getComptes().get(0);
+		// Compte leCompteCourant = this.dao.getCompteCourant(c);
 		return leCompteCourant;
 	}
 
