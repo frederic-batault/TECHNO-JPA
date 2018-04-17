@@ -7,6 +7,9 @@
 
 	<entity class="fr.gtm.domaine.Compte">
 		<table name="compte" />
+		<named-query name="getCompteEpargne">
+			<query>SELECT c FROM Compte as c WHERE c.idTypeCompte = 2 AND c.idClient = :idClient</query>
+		</named-query>
 		<attributes>
 			<id name="idCompte">
 				<generated-value strategy="IDENTITY" />
@@ -20,6 +23,26 @@
 <!-- 			<many-to-one name="client"> -->
 <!-- 				<join-column name="idClient" referenced-column-name="idClient" /> -->
 <!-- 			</many-to-one> -->
+		</attributes>
+	</entity>
+	
+	<entity class="fr.gtm.domaine.Client">
+		<attributes>
+			<id name="idClient">
+				<generated-value strategy="IDENTITY" />
+			</id>
+			<basic name="nom"  />
+			<basic name="prenom" />
+			<basic name="email" />
+			<basic name="adresse" />
+			<basic name="codePostal" />
+			<basic name="ville" />
+			<many-to-one name="conseiller" fetch="LAZY">
+				<join-column name="idConseiller" referenced-column-name="idConseiller" />
+			</many-to-one>
+			<one-to-many name="comptes">
+				<join-column name="idClient" />
+			</one-to-many>
 		</attributes>
 	</entity>
 </entity-mappings>

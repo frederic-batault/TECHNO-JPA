@@ -1,21 +1,26 @@
 package fr.gtm.domaine;
 
+import java.util.List;
+
 /**
  * classe Client herite de la classe Personne
- * 
+ *
  * @author Stagiaire
  *
  */
-public class Client extends Personne {
+public class Client {
 
 	// Attributs
-
-	private int idClient;
-	private String email;
 	private String adresse;
 	private String codePostal;
+	private List<Compte> comptes;
+	private Conseiller conseiller;
+	private String email;
+	private Integer idClient;
+	private Integer idConseiller;
+	private String nom;
+	private String prenom;
 	private String ville;
-	private int idConseiller;
 
 	// Constructeurs
 
@@ -29,7 +34,7 @@ public class Client extends Personne {
 
 	/**
 	 * Constructeur complet
-	 * 
+	 *
 	 * @param nom
 	 * @param prenom
 	 * @param idClient
@@ -38,11 +43,12 @@ public class Client extends Personne {
 	 * @param ville
 	 * @param email
 	 */
-	public Client(String nom, String prenom, int idClient, String email, String adresse, String codePostal,
-			String ville, int idConseiller) {
-		super(nom, prenom);
-		this.idConseiller=idConseiller;
-		this.idClient = idClient;
+	public Client(String nom, String prenom, int idClient, String email,
+			String adresse, String codePostal, String ville, int idConseiller) {
+		this.setNom(nom);
+		this.setPrenom(prenom);
+		this.setIdConseiller(idConseiller);
+		this.setIdClient(idClient);
 		this.email = email;
 		this.adresse = adresse;
 		this.codePostal = codePostal;
@@ -50,41 +56,52 @@ public class Client extends Personne {
 
 	}
 
-	// Getters/Setters
-	/**
-	 * @return idClient
-	 */
-	public int getIdClient() {
-		return idClient;
-	}
-
-	/**
-	 * @param idClient to set
-	 */
-	public void setIdClient(int idClient) {
-		this.idClient = idClient;
-	}
-
 	/**
 	 * @return Adresse
 	 */
 	public String getAdresse() {
-		return adresse;
+		return this.adresse;
+	}
+
+	/**
+	 * @return codePostal
+	 */
+	public String getCodePostal() {
+		return this.codePostal;
+	}
+
+	public List<Compte> getComptes() {
+		return this.comptes;
 	}
 
 	/**
 	 * @return email
 	 */
 	public String getEmail() {
-		return email;
+		return this.email;
+	}
+
+	public Integer getIdClient() {
+		return this.idClient;
+	}
+
+	public Integer getIdConseiller() {
+		return this.idConseiller;
+	}
+
+	public String getNom() {
+		return this.nom;
+	}
+
+	public String getPrenom() {
+		return this.prenom;
 	}
 
 	/**
-	 * @param email
-	 *            to set
+	 * @return ville
 	 */
-	public void setEmail(String email) {
-		this.email = email;
+	public String getVille() {
+		return this.ville;
 	}
 
 	/**
@@ -96,13 +113,6 @@ public class Client extends Personne {
 	}
 
 	/**
-	 * @return codePostal
-	 */
-	public String getCodePostal() {
-		return codePostal;
-	}
-
-	/**
 	 * @param codePostal
 	 *            to set
 	 */
@@ -110,11 +120,32 @@ public class Client extends Personne {
 		this.codePostal = codePostal;
 	}
 
+	public void setComptes(List<Compte> comptes) {
+		this.comptes = comptes;
+	}
+
 	/**
-	 * @return ville
+	 * @param email
+	 *            to set
 	 */
-	public String getVille() {
-		return ville;
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public void setIdClient(Integer idClient) {
+		this.idClient = idClient;
+	}
+
+	public void setIdConseiller(Integer idConseiller) {
+		this.idConseiller = idConseiller;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
 	}
 
 	/**
@@ -125,20 +156,4 @@ public class Client extends Personne {
 		this.ville = ville;
 	}
 
-	/**
-	 * @return idConseiller
-	 */
-	public int getIdConseiller() {
-		return idConseiller;
-	}
-
-	/**
-	 * @param idConseiller to set
-	 */
-	public void setIdConseiller(int idConseiller) {
-		this.idConseiller = idConseiller;
-	}
-
-	
-	
 }
